@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EDM HANGMAN!!!</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|VT323" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header text-center">
+		    		<h1>HANGMAN</h1>
+		    		<h2>EDM EDITION</h2>
+		    	</div>
+		    </div>
+		</div>
+
+		<div class="row is-flex">
+			<div class="col-md-1"></div>
+			<div class="col-md-5 left-col">
+				<img src="assets/images/dj-silhouette.png" id="winnerStuff" class="img-responsive center-block" alt="can you guess the word?">
+			</div>
+			<div class="col-md-5 right-col text-center">
+				<h3>press any key to start playing!</h3>
+				
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-3">
+						<p>wins:</p>
+						<p id="wins">0</p>
+					</div>
+					<div class="col-md-3">
+						<p>losses:</p>
+						<p id="losses">0</p>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+
+				<h3>current word</h3>
+
+				<p id="letters"></p>
+
+				<h3>number of lives remaining</h3>
+				<p id="lives"></p>
+
+				<h3>you've guessed these:</h3>
+				<p id="guesses">--</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+</body>
+</html>
