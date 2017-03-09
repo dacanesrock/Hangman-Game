@@ -24,6 +24,10 @@ p {
 	font-size: 16px;
 }
 
+.bbplayer-minimal {
+	display: none;
+}
+
 .caption {
 	text-align: center;
 	display: block;

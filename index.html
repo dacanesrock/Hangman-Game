@@ -15,6 +15,7 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
+	<link rel="stylesheet" href="music-player/css/bbplayer.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|VT323" rel="stylesheet">
@@ -22,6 +23,7 @@
 	<!-- Added link to the jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script src="music-player/js/bbplayer.js"></script>
 
 </head>
 <body>
@@ -76,6 +78,20 @@
 			</div>
 			<div class="col-md-1"></div>
 		</div>
+	
+		<!-- annoying audio player downloaded from web -->
+		<div class="row">
+			<div class="bbplayer-minimal">
+			   <span class="bb-play"></span>
+			   <audio autoplay>
+			     <!-- 
+			     playlist of audio files in MP3 and
+			     OGG format for cross browser support
+			     -->
+			     <source src="assets/background-music.mp3"/>
+			   </audio>
+			</div>
+		</div>
 		
 	</div>
 
@@ -85,4 +101,5 @@
     <!-- <script src="js/bootstrap.min.js"></script> -->
 
 </body>
+
 </html>
