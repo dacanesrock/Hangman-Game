@@ -144,7 +144,7 @@ function winner()
 document.onkeyup = function(event) 
 {
 
-	var userGuess = event.key;
+	var userGuess = event.key.toLowerCase();
 
 	// is guess a valid letter? (according to available letters)
     if (availableLetters.indexOf(userGuess) > -1) 
