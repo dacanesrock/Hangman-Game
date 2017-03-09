@@ -1,6 +1,9 @@
 //word library
 var wordLib = ["skrillex", "diplo", "galantis", "lido", "deadmau5", "getter", "zedd", "vindata", "tiesto", "flume", "branchez", "avicii", "hardwell", "machineheart"];
 
+//available letter
+var availableLetters = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+
 //empty array for guessed letters
 var guesses = [];
 
@@ -28,24 +31,31 @@ var currentWord ;
 var removeSpaces ;
 var wordSeparated ;
 
+var lettersGuessed ;
+var lettersMatched ;
+
 /////////////////////
 //reset game on click DOESN'T WORK YET
-// $("#playAgain").on("click", function() 
-// {
-// 	resetVariables() ;
-// 	startUp() ;
-// }
-//  )
+//$("#playAgain").on("click", function() 
+//{
+// resetVariables() ;
+// startUp() ;
+//}
+// )
 
-function startUp () {
+function startUp () 
+{
 	currentWord = wordLib[Math.floor(Math.random() * wordLib.length)];
 	console.log(currentWord);
 
-	for (var i = 0; i < currentWord.length; i++) {
-		if (currentWord[i] === "\u00A0") {
+	for (var i = 0; i < currentWord.length; i++) 
+	{
+		if (currentWord[i] === "\u00A0") 
+		{
 			spaces[i] = " \u00A0";
 		}
-		else {
+		else 
+		{
 			spaces[i] = "_ ";
 		}
 	}
@@ -59,9 +69,12 @@ function startUp () {
 	correctGuess = 0;
 }
 
+//document.getElementById("playAgain").onclick = setup;
+
 /////////////////////////////////
 //will set up game on window load
-window.onload = function startUp () {
+window.onload = function startUp () 
+{
 
 	currentWord = wordLib[Math.floor(Math.random() * wordLib.length)];
 	console.log(currentWord);
@@ -69,7 +82,8 @@ window.onload = function startUp () {
 	// re = /\s*;\s*/;
 	// wordSeparated = currentWord.split(re);
 
-	for (var i = 0; i < currentWord.length; i++) {
+	for (var i = 0; i < currentWord.length; i++) 
+	{
 		if (currentWord[i] === "_") 
 		{
 			spaces[i] = "\u00A0";
@@ -87,15 +101,12 @@ window.onload = function startUp () {
 	document.getElementById("lives").innerHTML = lives;
 
 	correctGuess = 0;
-
-	// document.getElementById("playOn").onclick = function play() {
-	// 	playOn() ;
- //    }
 }
 
 /////////////////////////
 //reset default variables
-function resetVariables() {
+function resetVariables() 
+{
 	guesses = [];
 	spaces = [];
 	startUp();
@@ -103,7 +114,8 @@ function resetVariables() {
 
 /////////////////
 //losing function
-function loser() {
+function loser() 
+{
 	if (lives < 1) 
 	{
 		document.getElementById("winnerMessage").innerHTML = "Game Over!";
@@ -116,25 +128,36 @@ function loser() {
 
 //////////////////
 //winning function
-function winner() {
+function winner() 
+{
 	if (correctGuess === currentWord.length) 
 	{
-		document.getElementById("winnerMessage").innerHTML = "You Win!";
+		document.getElementById("winnerMessage").innerHTML = "You Win! The word was: " + currentWord.toUpperCase();
 		wins++;
 		document.getElementById("wins").innerHTML = wins;
 		resetVariables();
 	}
 }
 
-// function addGuess() {
-// 	document.getElementById("guesses").innerHTML = guesses.join("");
-// }
-
 /////////////////////
 //main game processes
-document.onkeyup = function(event) {
+document.onkeyup = function(event) 
+{
 
 	var userGuess = event.key;
+
+	// is guess a valid letter? (according to available letters)
+    if (availableLetters.indexOf(userGuess) > -1) 
+    {
+        // has it been guessed already?
+        for (var i = 0; i < guesses.length; i++)
+        {
+        	if (guesses[i] === userGuess)
+        	{
+        		document.getElementById("winnerMessage").innerHTML = "you've already guessed this letter!";
+            	lives.classList.add("text-warning");
+        	}
+        }
 
 		for (var i = 0; i < currentWord.length; i++)
 		{
@@ -143,16 +166,21 @@ document.onkeyup = function(event) {
 				spaces[i] = userGuess;
 				correctGuess++;
 			}
-			// else (currentWord[i] != userGuess) {
-			// 	guesses[i] = userGuess;
-			// }
 		}
+
+		guesses.push(userGuess);	
+		lives--;
+	}
+	// not a valid letter, error
+    else 
+    {
+    	document.getElementById("winnerMessage").innerHTML = "this is not a valid guess, try again!";
+    }
 
 	// removeSpaces = /\s*/;
 	// wordSeparated = currentWord.split("removeSpaces");	
 
-	guesses.push(userGuess);	
-	lives--;
+
 	document.getElementById("lives").innerHTML = lives;
 	document.getElementById("letters").innerHTML = spaces.join(" ");
 	document.getElementById("guesses").innerHTML = guesses.join(" ");
@@ -160,8 +188,5 @@ document.onkeyup = function(event) {
 
 	loser();
 	winner();
-	// addGuess();
-	// resetVariables();
-	// document.querySelector("guesses").innerHTML = userGuess;
 
 }
